@@ -1,0 +1,26 @@
+# display
+
+LARGURA = 800
+ALTURA = 800
+LABIRINTO_LARGURA = 21
+LABIRINTO_ALTURA = 21
+TAMANHO_CELULA = 40
+
+
+TITULO_JOGO = "Labirinto"
+
+#Cores
+
+PRETO = (0, 0, 0)
+BRANCO = (255, 255, 255)
+AZUL = (0, 0, 255)
+VERMELHO = (255, 0, 0)
+
+# Jogador
+
+JOGADOR_POS = [1, 1]
+
+#Objetivo
+
+OBJETIVO_POS = [8, 8]
+
