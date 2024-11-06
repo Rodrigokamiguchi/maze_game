@@ -66,26 +66,101 @@ class Game:
         return [self.gerar_posicao_valida() for _ in range(3)]
 
     def desenha_labirinto(self):
+        largura_labirinto_px = design.LABIRINTO_LARGURA * design.TAMANHO_CELULA
+        altura_labirinto_px = design.LABIRINTO_ALTURA * design.TAMANHO_CELULA
+        offset_x = (self.tela.get_width() - largura_labirinto_px) // 2
+        offset_y = (self.tela.get_height() - altura_labirinto_px) // 2
+
         for y, linha in enumerate(self.labirinto):
             for x, celula in enumerate(linha):
                 cor = design.BRANCO if celula == '0' else design.PRETO
-                pygame.draw.rect(self.tela, cor, (x * design.TAMANHO_CELULA, y * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+                pygame.draw.rect(
+                    self.tela,
+                    cor,
+                    (
+                        offset_x + x * design.TAMANHO_CELULA,
+                        offset_y + y * design.TAMANHO_CELULA,
+                        design.TAMANHO_CELULA,
+                        design.TAMANHO_CELULA
+                    )
+                )
 
         for porta in self.portas:
-            pygame.draw.rect(self.tela, design.DOURADO, (porta[1] * design.TAMANHO_CELULA, porta[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+            pygame.draw.rect(
+                self.tela,
+                design.DOURADO,
+                (
+                    offset_x + porta[1] * design.TAMANHO_CELULA,
+                    offset_y + porta[0] * design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA
+                )
+            )
 
         for monstro in self.monstros:
-            pygame.draw.rect(self.tela, design.ROSA, (monstro[1] * design.TAMANHO_CELULA, monstro[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+            pygame.draw.rect(
+                self.tela,
+                design.ROSA,
+                (
+                    offset_x + monstro[1] * design.TAMANHO_CELULA,
+                    offset_y + monstro[0] * design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA
+                )
+            )
 
     def desenha_jogador(self):
-        pygame.draw.rect(self.tela, design.AZUL, (self.jogador_pos[1] * design.TAMANHO_CELULA, self.jogador_pos[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+        largura_labirinto_px = design.LABIRINTO_LARGURA * design.TAMANHO_CELULA
+        altura_labirinto_px = design.LABIRINTO_ALTURA * design.TAMANHO_CELULA
+        offset_x = (self.tela.get_width() - largura_labirinto_px) // 2
+        offset_y = (self.tela.get_height() - altura_labirinto_px) // 2
+
+        pygame.draw.rect(
+            self.tela,
+            design.AZUL,
+            (
+                offset_x + self.jogador_pos[1] * design.TAMANHO_CELULA,
+                offset_y + self.jogador_pos[0] * design.TAMANHO_CELULA,
+                design.TAMANHO_CELULA,
+                design.TAMANHO_CELULA
+            )
+        )
 
     def desenha_objetivo(self):
-        pygame.draw.rect(self.tela, design.VERMELHO, (self.objetivo_pos[1] * design.TAMANHO_CELULA, self.objetivo_pos[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+        largura_labirinto_px = design.LABIRINTO_LARGURA * design.TAMANHO_CELULA
+        altura_labirinto_px = design.LABIRINTO_ALTURA * design.TAMANHO_CELULA
+        offset_x = (self.tela.get_width() - largura_labirinto_px) // 2
+        offset_y = (self.tela.get_height() - altura_labirinto_px) // 2
+
+        pygame.draw.rect(
+            self.tela,
+            design.VERMELHO,
+            (
+                offset_x + self.objetivo_pos[1] * design.TAMANHO_CELULA,
+                offset_y + self.objetivo_pos[0] * design.TAMANHO_CELULA,
+                design.TAMANHO_CELULA,
+                design.TAMANHO_CELULA
+            )
+        )
 
     def desenha_chaves(self):
+        largura_labirinto_px = design.LABIRINTO_LARGURA * design.TAMANHO_CELULA
+        altura_labirinto_px = design.LABIRINTO_ALTURA * design.TAMANHO_CELULA
+        offset_x = (self.tela.get_width() - largura_labirinto_px) // 2
+        offset_y = (self.tela.get_height() - altura_labirinto_px) // 2
+
         for chave in self.chaves:
-            pygame.draw.rect(self.tela, design.AMARELO, (chave[1] * design.TAMANHO_CELULA, chave[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+            pygame.draw.rect(
+                self.tela,
+                design.AMARELO,
+                (
+                    offset_x + chave[1] * design.TAMANHO_CELULA,
+                    offset_y + chave[0] * design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA,
+                    design.TAMANHO_CELULA
+                )
+            )
+
 
     def mover_monstros(self):
         for i, monstro in enumerate(self.monstros):
