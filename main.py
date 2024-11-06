@@ -36,18 +36,55 @@ class Game:
         pygame.display.set_caption(design.TITULO_JOGO)
 
         # Cria e gera o labirinto
+        self.nivel = 1 # Nivel inicial
+        self.iniciar_novo_nivel()
+
+    def iniciar_novo_nivel(self): 
+        # Renicia o labirinto e posições do iniciar um novo nivel
         self.desafio = Desafio()
         self.labirinto = self.desafio.criar_labirinto()
 
-        # Posição inicial do jogador e objetivo
+        # Adicionar jogador e objetivo
         self.jogador_pos = [1, 1]  # Posição inicial do jogador (x, y)
         self.objetivo_pos = [design.LABIRINTO_ALTURA - 2, design.LABIRINTO_LARGURA - 2]  # Posição do objetivo
+        
+        # Gerar monstros e portas
+        if self.nivel >= 10:
+            self.monstros = self.gerar_monstros() #lista de monstros
+            self.portas = self.gerar_portas() #lista de monstros
+        else:
+            self.monstros = []
+            self.portas = []
 
+    def gerar_portas(self):
+        portas = []
+        for _ in range(2):
+            x, y = random.randrange(1, design.LABIRINTO_LARGURA, 2), random.randrange(1, design.LABIRINTO_ALTURA, 2)
+            if self.labirinto [x] [y] == '0':
+                portas.append((x,y))
+        return portas
+    
+    def gerar_monstros(self):
+        monstros = []
+        for _ in range(3):
+            x, y = random.randrange(1, design.LABIRINTO_LARGURA, 2), random.randrange(1, design.LABIRINTO_ALTURA, 2)
+            if self.labirinto [x][y] == '0':
+                monstros.append((x, y))
+        return monstros
+    
     def desenha_labirinto(self):
         for y, linha in enumerate(self.labirinto):
             for x, celula in enumerate(linha):
                 cor = design.BRANCO if celula == '0' else design.PRETO
                 pygame.draw.rect(self.tela, cor, (x * design.TAMANHO_CELULA, y * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+
+        # Adiciona logica de nivel
+        if self.nivel >= 10:
+            # Logica para gerar portas e monstros
+            for porta in self.portas:
+                pygame.draw.rect(self.tela, design.DOURADO, (porta[1] * design.TAMANHO_CELULA, porta[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
+            for monstro in self.monstros:
+                pygame.draw.rect(self.tela, design.ROSA, (monstro[1] * design.TAMANHO_CELULA, monstro[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
 
     def desenha_jogador(self):
         pygame.draw.rect(self.tela, design.AZUL, (self.jogador_pos[1] * design.TAMANHO_CELULA, self.jogador_pos[0] * design.TAMANHO_CELULA, design.TAMANHO_CELULA, design.TAMANHO_CELULA))
@@ -57,7 +94,7 @@ class Game:
 
     def jogo_labirinto(self):
         clock = pygame.time.Clock()
-        while True:
+        while self.nivel <= 20:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -79,9 +116,15 @@ class Game:
 
                     # Verifica se o jogador encontrou o objetivo
                     if self.jogador_pos == self.objetivo_pos:
-                        print("Parabéns! Você encontrou a saída!")
-                        pygame.quit()
-                        sys.exit()
+                        print(f"Parabéns! Você completou o nivel {self.nivel}")
+                        self.nivel += 1
+                        if self.nivel > 20:
+                            print("Você completou todos os niveis! Parabéns")
+                            pygame.quit()
+                            sys.exit()
+                        else:
+                            # Inicia o proximo nivel
+                            self.iniciar_novo_nivel()
 
             self.tela.fill(design.PRETO)
             self.desenha_labirinto()
