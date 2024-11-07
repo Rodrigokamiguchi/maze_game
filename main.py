@@ -177,12 +177,17 @@ class Game:
     def verificar_colisao_monstro(self):
         return any(self.jogador_pos == monstro for monstro in self.monstros)
     
-    def mostrar_pontuçao_tempo(self):
+    def mostrar_pontuacao_tempo(self):
         tempo_decorrido = (pygame.time.get_ticks() - self.tempo_inicio) // 1000  # Em segundos
+        texto_nivel = self.fonte.render(f"Nível: {self.nivel}", True, design.BRANCO)
         texto_pontuacao = self.fonte.render(f"Pontuação: {self.pontuacao}", True, design.BRANCO)
         texto_tempo = self.fonte.render(f"Tempo: {tempo_decorrido}s", True, design.BRANCO)
-        self.tela.blit(texto_pontuacao, (10, 10))
-        self.tela.blit(texto_tempo, (10, 50))
+
+        # Exibindo os textos na tela
+        self.tela.blit(texto_nivel, (10, 10))
+        self.tela.blit(texto_pontuacao, (10, 50))
+        self.tela.blit(texto_tempo, (10, 90))
+
 
     def calcular_pontuacao(self):
         tempo_nivel = (pygame.time.get_ticks() - self.tempo_nivel) // 1000
@@ -221,12 +226,12 @@ class Game:
                     if self.jogador_pos == self.objetivo_pos:
                         self.calcular_pontuacao()
                         self.mostrar_mensagem(f"Parabéns! Nivel {self.nivel} concluído!")
-                        pygame.display.flip()
+                        pygame.display.update()
                         pygame.time.delay(1000)
                         self.nivel += 1
                         if self.nivel > 20:
                             self.mostrar_mensagem("Você completou todos os níveis! Parabéns!")
-                            pygame.display.flip()
+                            pygame.display.update()
                             pygame.time.delay(2000)
                             pygame.quit()
                             sys.exit()
@@ -234,7 +239,7 @@ class Game:
 
             if self.verificar_colisao_monstro():
                 self.mostrar_mensagem("Game Over! Você foi derrotado por um monstro.")
-                pygame.display.flip()
+                pygame.display.update()
                 pygame.time.delay(2000)
                 pygame.quit()
                 sys.exit()
@@ -245,7 +250,7 @@ class Game:
             self.desenha_jogador()
             self.desenha_objetivo()
             self.desenha_chaves()
-            self.mostrar_pontuçao_tempo()
+            self.mostrar_pontuacao_tempo()
             pygame.display.flip()
             clock.tick(10)
 
