@@ -81,7 +81,7 @@ Additional power-ups, such as invisibility to bypass monsters.
 ## Acknowledgments
 This game was developed as a project to explore Python’s capabilities in game development. It combines problem-solving mechanics with engaging gameplay to provide an enjoyable experience for players of all ages.
 
-## Image
+## Screenshot
 
 ![image](https://github.com/user-attachments/assets/c374cf3a-b09d-4a09-94b9-d1d9ccd58057)
 ![image](https://github.com/user-attachments/assets/766b12ed-a88f-4cc5-ae81-08577f9c6acf)
