@@ -22,6 +22,7 @@ Speed boosts (optional feature) are scattered in some levels to enhance player m
 Messages:
 
 Real-time display messages for events such as picking up keys, unlocking doors, or colliding with monsters.
+
 ## Gameplay
 Objective: Navigate the maze from the starting point to the finish line while avoiding monsters and unlocking doors using keys.
 Rules:
@@ -31,6 +32,7 @@ Complete the level within the shortest time possible to maximize the score.
 Progression:
 Levels 1-9: Simple maze navigation.
 Levels 10-20: Introduction of monsters, doors, and keys for added complexity.
+
 ## Technical Details
 Programming Language: Python
 
@@ -57,6 +59,7 @@ Sound and Animations:
 
 Optional feature: Background music and sound effects for interactions (e.g., picking up a key, unlocking a door).
 Explosion animation upon collision with a monster.
+
 ## Installation and Setup
 Dependencies:
 
@@ -73,15 +76,17 @@ Configuration:
 
 Difficulty settings can be adjusted by modifying the speed of monsters or the complexity of the maze in the code.
 Game levels are easily expandable by adding new maze layouts.
+
 ## Future Enhancements
 Procedural generation of maze layouts for infinite levels.
 Online leaderboard to track player scores.
 Multiplayer mode for cooperative or competitive gameplay.
 Additional power-ups, such as invisibility to bypass monsters.
+
 ## Acknowledgments
 This game was developed as a project to explore Python’s capabilities in game development. It combines problem-solving mechanics with engaging gameplay to provide an enjoyable experience for players of all ages.
 
-## Screenshot
+## Screenshots
 
 ![image](https://github.com/user-attachments/assets/c374cf3a-b09d-4a09-94b9-d1d9ccd58057)
 ![image](https://github.com/user-attachments/assets/766b12ed-a88f-4cc5-ae81-08577f9c6acf)
@@ -92,6 +97,7 @@ Graphics and Sound: Custom-created or sourced from open repositories (if applica
 Libraries Used:
 Python: https://www.python.org/
 Pygame: https://www.pygame.org/
+
 ## License
 This game is open-source and distributed under the MIT License. You are free to modify, distribute, and use the game as long as proper credit is given to the original developer(s). The full text of the license can be found in the LICENSE file.
 
