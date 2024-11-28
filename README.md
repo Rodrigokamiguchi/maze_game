@@ -80,7 +80,3 @@ Multiplayer mode for cooperative or competitive gameplay.
 Additional power-ups, such as invisibility to bypass monsters.
 ## Acknowledgments
 This game was developed as a project to explore Python’s capabilities in game development. It combines problem-solving mechanics with engaging gameplay to provide an enjoyable experience for players of all ages.
-
-## Contribution
-Feel free to fork the project and submit pull requests for enhancements or bug fixes. For any issues, open a ticket on the project's GitHub repository.
-
