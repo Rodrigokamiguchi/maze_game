@@ -86,6 +86,15 @@ This game was developed as a project to explore Python’s capabilities in game 
 ![image](https://github.com/user-attachments/assets/c374cf3a-b09d-4a09-94b9-d1d9ccd58057)
 ![image](https://github.com/user-attachments/assets/766b12ed-a88f-4cc5-ae81-08577f9c6acf)
 
+## Credits
+Developer: [Rodrigo Kamiguchi]
+Graphics and Sound: Custom-created or sourced from open repositories (if applicable).
+Libraries Used:
+Python: https://www.python.org/
+Pygame: https://www.pygame.org/
+## License
+This game is open-source and distributed under the MIT License. You are free to modify, distribute, and use the game as long as proper credit is given to the original developer(s). The full text of the license can be found in the LICENSE file.
+
 
 
 
