@@ -32,7 +32,49 @@ class Game:
         self.fonte = pygame.font.Font(None, 36)
         self.nivel = 1  # Nivel inicial
         self.pontuacao = 0 # Inciar pontuação
-        self.iniciar_novo_nivel()
+        self.iniciar_tela_inicial()
+
+    def iniciar_tela_inicial(self):
+        """Tela inicial com as instruções e botão para começar o jogo"""
+        # Instruções do jogo
+        instrucoes = [
+            "Bem-vindo ao Jogo Labirinto!",
+            "Use as teclas de seta para mover.",
+            "Evite monstros e colete as chaves.",
+            "Chegue até o objetivo para avançar de nível.",
+            "Pressione ENTER para começar o jogo."
+        ]
+
+        # Exibir a tela inicial com instruções
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:  # Quando pressionar ENTER, inicia o jogo
+                        self.iniciar_novo_nivel()
+                        self.jogo_labirinto()
+                    elif event.key == pygame.K_ESCAPE: # Quando pressionar ESC, sai do jogo
+                        pygame.quit()
+                        sys.exit()
+
+            self.tela.fill(design.PRETO)  # Preencher a tela com a cor preta
+
+            # Exibir instruções
+            for i, linha in enumerate(instrucoes):
+                texto = self.fonte.render(linha, True, design.BRANCO)
+                self.tela.blit(texto, (self.tela.get_width() // 2 - texto.get_width() // 2, 100 + i * 40))
+
+            # Instruções de início
+            texto_inicio = self.fonte.render("Pressione ENTER para começar", True, design.BRANCO)
+            self.tela.blit(texto_inicio, (self.tela.get_width() // 2 - texto_inicio.get_width() // 2, 350))
+            texto_sair = self.fonte.render("Pressione ESC para sair", True, design.BRANCO)
+            self.tela.blit(texto_sair, (self.tela.get_width() // 2 - texto_sair.get_width() // 2, 400))
+
+
+            pygame.display.flip()
+
 
     def iniciar_novo_nivel(self):
         self.tempo_inicio = pygame.time.get_ticks() # Incia o tempo ao começar o nivel

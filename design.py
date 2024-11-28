@@ -7,7 +7,7 @@ LABIRINTO_ALTURA = 21
 TAMANHO_CELULA = 40
 
 
-TITULO_JOGO = "Labirinto"
+TITULO_JOGO = "Maze Game"
 
 #Cores
 
